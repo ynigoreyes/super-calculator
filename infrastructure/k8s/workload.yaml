@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculator-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: calculator-api
+  template:
+    metadata:
+      labels:
+        app: calculator-api
+    spec:
+      containers:
+      - name: calculator-api
+        image: miggylol/calculator
+        ports:
+        - containerPort: 50051
+        imagePullPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculator-client
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: calculator-client
+  template:
+    metadata:
+      labels:
+        app: calculator-client
+    spec:
+      containers:
+      - name: calculator-client
+        image: miggylol/client
+        imagePullPolicy: Always

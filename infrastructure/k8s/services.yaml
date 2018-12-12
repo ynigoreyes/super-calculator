@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: api
+spec:
+  selector:
+    app: calculator-api
+  ports:
+  - port: 50051
+    targetPort: 50051
