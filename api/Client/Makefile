@@ -26,9 +26,6 @@ clean:
 	rm -f $(BINARY_NAME)
 	rm -f $(BINARY_UNIX)
 
-protogen:
-	protoc -I ../../infrastructure ../../infrastructure/proto/calculator.proto --go_out=plugins=grpc:../../api/Client
-
 # Cross compilation
 build-linux:
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GOBUILD) -o $(BINARY_UNIX) -v
